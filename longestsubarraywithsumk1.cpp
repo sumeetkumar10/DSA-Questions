@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int longestSubarray(int arr[],int n,int k){
+    int maxLen=0;
+    for(int i=0;i<n;i++){
+        int sum=0;
+        for(int j=i;j<n;j++){
+            sum+=arr[j];
+            if(sum==k){
+                maxLen=max(maxLen,j-i+1);
+            }
+        }
+    }
+    return maxLen;
+}
+
+int main(){
+    int n;
+    cout<<"Enter the size of the array you want to create"<<endl;
+    cin>>n;
+
+    int* arr=new int[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+
+    int k;
+    cout<<"Enter k"<<endl;
+    cin>>k;
+
+    cout<<"The length of the longest subarray with sum "<<k<<" is "<<longestSubarray(arr,n,k)<<endl;
+
+    return 0;
+}
